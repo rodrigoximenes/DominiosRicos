@@ -1,1 +1,55 @@
+# Pastas do Visual Studio
 .vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Arquivos de build
+bin/
+obj/
+out/
+debug/
+release/
+
+# Dependências geradas pelo NuGet
+*.nupkg
+*.snupkg
+packages/
+project.lock.json
+project.assets.json
+# Se estiver usando SDK-style projects (novo formato do .NET Core)
+.nuget/
+
+# Logs e temporários
+*.log
+*.tlog
+*.cache
+*.pdb
+*.pidb
+*.svclog
+*.log
+*.ide
+
+# Configurações de ambiente (não versionar credenciais)
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+
+# Configurações do Rider/JetBrains
+.idea/
+*.sln.iml
+
+# Configurações do macOS/Linux (se for multiplataforma)
+.DS_Store
+*.swp
+
+# Arquivos gerados pelo Test Explorer
+TestResults/
+
+# Arquivos do Docker (se usar Docker no projeto)
+**/[Dd]ockerfile
+**/docker-compose*
+
+# Arquivos do Git relacionados a conflitos
+*.orig
