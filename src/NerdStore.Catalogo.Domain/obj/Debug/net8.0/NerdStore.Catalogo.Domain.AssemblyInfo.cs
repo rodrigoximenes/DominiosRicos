@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NerdStore.Catalogo.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+146315ee20e0c2c92dba3cfdec5938b086fd2eea")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+401b1910fb6ff7b594abe2daf8238559110a2394")]
 [assembly: System.Reflection.AssemblyProductAttribute("NerdStore.Catalogo.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NerdStore.Catalogo.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
