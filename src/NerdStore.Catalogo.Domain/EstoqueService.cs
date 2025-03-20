@@ -1,20 +1,15 @@
-﻿using System;
-using System.Threading.Tasks;
-using NerdStore.Catalogo.Domain.Events;
+﻿using NerdStore.Catalogo.Domain.Events;
 using NerdStore.Core.Bus;
-using NerdStore.Core.Communication.Mediator;
-using NerdStore.Core.DomainObjects.DTO;
-using NerdStore.Core.Messages.CommonMessages.Notifications;
 
 namespace NerdStore.Catalogo.Domain
 {
     public class EstoqueService : IEstoqueService
     {
         private readonly IProdutoRepository _produtoRepository;
-        private readonly IMediatorHandler _mediatorHandler;
+        private readonly IMediatrHandler _mediatorHandler;
 
         public EstoqueService(IProdutoRepository produtoRepository,
-                              IMediatorHandler mediatorHandler)
+                              IMediatrHandler mediatorHandler)
         {
             _produtoRepository = produtoRepository;
             _mediatorHandler = mediatorHandler;
@@ -34,7 +29,7 @@ namespace NerdStore.Catalogo.Domain
 
             if (!produto.PossuiEstoque(quantidade))
             {
-                await _mediatorHandler.PublicarNotificacao(new DomainNotification("Estoque", $"Produto - {produto.Nome} sem estoque"));
+                //await _mediatorHandler.PublicarNotificacao(new DomainNotification("Estoque", $"Produto - {produto.Nome} sem estoque"));
                 return false;
             }
 
@@ -50,25 +45,25 @@ namespace NerdStore.Catalogo.Domain
             return true;
         }
 
-        public async Task<bool> DebitarListaProdutosPedido(ListaProdutosPedido lista)
-        {
-            foreach (var item in lista.Itens)
-            {
-                if (!await DebitarItemEstoque(item.Id, item.Quantidade)) return false;
-            }
+        //public async Task<bool> DebitarListaProdutosPedido(ListaProdutosPedido lista)
+        //{
+        //    foreach (var item in lista.Itens)
+        //    {
+        //        if (!await DebitarItemEstoque(item.Id, item.Quantidade)) return false;
+        //    }
 
-            return await _produtoRepository.UnitOfWork.Commit();
-        }
+        //    return await _produtoRepository.UnitOfWork.Commit();
+        //}
 
-        public async Task<bool> ReporListaProdutosPedido(ListaProdutosPedido lista)
-        {
-            foreach (var item in lista.Itens)
-            {
-                await ReporItemEstoque(item.Id, item.Quantidade);
-            }
+        //public async Task<bool> ReporListaProdutosPedido(ListaProdutosPedido lista)
+        //{
+        //    foreach (var item in lista.Itens)
+        //    {
+        //        await ReporItemEstoque(item.Id, item.Quantidade);
+        //    }
 
-            return await _produtoRepository.UnitOfWork.Commit();
-        }
+        //    return await _produtoRepository.UnitOfWork.Commit();
+        //}
 
         public async Task<bool> ReporEstoque(Guid produtoId, int quantidade)
         {

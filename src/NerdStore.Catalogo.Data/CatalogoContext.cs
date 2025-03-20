@@ -14,6 +14,11 @@ namespace NerdStore.Catalogo.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            modelBuilder.Entity<Produto>()
+            .Property(p => p.Valor)
+            .HasColumnType("decimal(18,2)");    
+
             foreach (var property in modelBuilder.Model
                 .GetEntityTypes()
                 .SelectMany(e => e.GetProperties())
@@ -23,6 +28,8 @@ namespace NerdStore.Catalogo.Data
             }
 
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(CatalogoContext).Assembly);
+
+            base.OnModelCreating(modelBuilder);
         }
 
 
